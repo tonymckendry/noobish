@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var ventures = require('./routes/ventures');
 var auth = require('./routes/auth');
 var comments = require('./routes/comments');
 var kits = require('./routes/kits')
@@ -28,8 +29,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
-app.use('/', ventures);
-app.use('/', bins);
+app.use('/ventures', ventures);
+app.use('/ventures/:id/bins', bins);
 app.use('/', kits);
 app.use('/', comments);
 app.use('/', auth);
