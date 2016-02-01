@@ -1,7 +1,7 @@
 # jadebootstrap-seed
 [JADE-Bootstrap](http://rajasegar.github.io/JADE-Bootstrap/) boilerplate project for [NodeJS](http://nodejs.org/) using [Express](http://expressjs.com) middleware
 
-## Quick Start
+## Quick Start 
 
   The quickest way to get started with this boilerplate is to install the packages first and use the npm script to start the application as shown below:
 
@@ -19,4 +19,3 @@ $ npm start
   * JADE set as the default Template engine
   * Focus on high performance
   * Super-speed development using JADE mixins
-  
