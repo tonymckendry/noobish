@@ -1,0 +1,13 @@
+//- extends ../../node_modules/jade-bootstrap/layouts/starter
+
+block content
+  div.form-box-container
+    div.alternative_action
+      h1 SIGN UP
+  form(action="/users" method="POST")
+      include form.jade
+
+
+  div.form-box-container
+    div.alternative_action
+      a(href="/")  Already have an account? Sign in

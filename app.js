@@ -28,12 +28,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/users', users);
+app.use('/', auth);
+app.use('/', users);
 app.use('/ventures', ventures);
 app.use('/ventures/:id/bins', bins);
 app.use('/', kits);
 app.use('/', comments);
-app.use('/', auth);
 
 
 // catch 404 and forward to error handler
