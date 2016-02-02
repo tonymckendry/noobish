@@ -16,10 +16,23 @@ router.get('/facebook/callback', passport.authenticate('facebook', {failureRedir
 function(req, res){
   console.log('*******///////*******')
   console.log(req.user)
-  // res.cookie('user', req.user[0].id)
-  // User().select().where('id', req.cookies.user).then(function(results){
-    res.render('success')
-  // })
+  var useriD = req.user.fb_id
+  if (req.user[0] !== undefined){
+    console.log('IN THE AUTH IF');
+    User().select().where('username', req.user[0].username).then(function(results){
+      res.cookie('user', results[0].id)
+      console.log(results);
+      res.render('index')
+    })
+  } else{
+    console.log('IN THE AUTH ELSE');
+    console.log('UseriD = ' + useriD);
+    User().select().where('fb_id', useriD).then(function(results){
+      res.cookie('user', results[0].id)
+      console.log(results);
+      res.redirect('/auth/choose')
+    })
+  }
 })
 
 router.get('/signup', function(req, res, next) {
@@ -38,6 +51,13 @@ router.get('/signin', function(req, res, next) {
       res.render("auth/signin", {button_text: "sign in"});
     }
 });
+
+router.get('/choose', function(req, res, next){
+  var user = req.cookies.user
+  res.render('auth/choose', {user: user})
+})
+
+// router.post()
 
 router.get('/:anything', function(req, res, next) {
   if (req.cookies.username){

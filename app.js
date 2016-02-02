@@ -60,9 +60,9 @@ passport.use(new FacebookStrategy({
         }
         console.log('obj is: ' + obj.username)
         User().insert(obj).then(function(facebook){
-          return done(null, obj)
-
+            return done(null, obj)
           })
+
       }
     })
     })

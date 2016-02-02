@@ -26,5 +26,11 @@ router.post('/users/login', function(req, res, next) {
     })
 });
 
+router.post('/users/uName', function(req, res, next){
+  Users().where('id', req.body.userId).update('username', req.body.uName).then(function(results){
+    res.redirect('/')
+  })
+})
+
 
 module.exports = router;
