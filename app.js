@@ -78,7 +78,7 @@ app.use('/', routes);
 app.use('/', users);
 app.use('/auth', auth);
 app.use('/ventures', ventures);
-app.use('/ventures/:v_id/bins', bins);
+app.use('/ventures', bins);
 app.use('/', kits);
 app.use('/ventures/:v_id/bins/:b_id/comments', comments);
 

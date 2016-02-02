@@ -2,8 +2,11 @@ var express = require('express');
 var router = express.Router();
 var knex = require('../db/knex')
 
-function Bins(){
-return knex('bins');
+// in app.js this is: app.use('/ventures', ventures);
+
+
+function Ventures(){
+return knex('ventures');
 }
 /* GET home page. */
 router.get('/', function(req, res, next) {

@@ -7,7 +7,7 @@ return knex('comments');
 }
 
 //THIS IS WHAT IS IN APP.JS:
-// var comments = require('./routes/ventures/:v_id/bins/:b_id/comments');
+// app.use('/ventures/:v_id/bins/:b_id/comments', comments);
 
 
 router.post('/', function(req, res, next) {
