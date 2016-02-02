@@ -8,7 +8,7 @@ var Ebay = require('ebay');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-var ebay = require('./routes/Ebay');
+// var ebay = require('./routes/Ebay');
 
 var app = express();
 
@@ -26,7 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
-app.use('/Ebay', ebay);
+// app.use('/Ebay', ebay);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
