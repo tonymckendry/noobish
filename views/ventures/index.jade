@@ -4,7 +4,7 @@ extends ../node_modules/jade-bootstrap/layouts/starter
 append body
 	.container
 		h1= title
-		p Welcome to Noobish
+		p Welcome to #{title}
 		+alert-info("This is a sample info alert.")
 		+navbar("Project name","dropdown_menu")
 		+navbar("Project name","dropdown_menu","inverse")
@@ -25,5 +25,3 @@ append body
 				+nav_item("#") Separated link
 				+nav_item("#") One more separated link
 	h1 Rajasegar
-	a(href='/auth/facebook')
-		p Login with Facebook
