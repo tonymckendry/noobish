@@ -9,9 +9,9 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var ventures = require('./routes/ventures');
 var auth = require('./routes/auth');
-var comments = require('./routes/comments');
+var comments = require('./routes/ventures/:v_id/bins/:b_id/comments');
 var kits = require('./routes/kits')
-var bins = require('./routes/bins')
+var bins = require('./routes/ventures/:v_id/bins')
 
 var app = express();
 
