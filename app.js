@@ -5,6 +5,20 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var Ebay = require('ebay');
+
+
+
+var session = require('cookie-session');
+require('dotenv').load();
+var passport = require('passport');
+var FacebookStrategy = require('passport-facebook').Strategy
+var knex = require('./db/knex')
+
+function User(){
+  return knex('users')
+}
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var ventures = require('./routes/ventures');
@@ -12,6 +26,7 @@ var auth = require('./routes/auth');
 var comments = require('./routes/comments');
 var kits = require('./routes/kits')
 var bins = require('./routes/bins')
+
 
 var app = express();
 
@@ -26,15 +41,58 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({keys:[process.env.SESSION_KEY1, process.env.SESSION_KEY2]}))
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new FacebookStrategy({
+  clientID: process.env.LINKEDIN_CLIENT_ID,
+  clientSecret: process.env.LINKEDIN_CLIENT_SECRET,
+  callbackURL: "http://localhost:3000/auth/facebook/callback/",
+  enableProof: false
+},
+  function(accessToken, refreshToken, profile, done){
+    console.log(profile)
+    User().select().where('fb_id', profile.id).then(function(fbUser){
+      if (fbUser.length){
+        console.log("in the if")
+        console.log(fbUser);
+        return done(null, fbUser)
+      } else {
+        console.log("in the else");
+        var obj = {
+          fb_id: profile.id,
+          username: profile.displayName.slice(0, profile.displayName.indexOf(' '))
+        }
+        console.log('obj is: ' + obj.username)
+        User().insert(obj).then(function(facebook){
+            return done(null, obj)
+          })
+
+      }
+    })
+    })
+)
+passport.serializeUser(function(user, done){
+  done(null, user)
+})
+passport.deserializeUser(function(user, done){
+  done(null, user)
+})
 
 app.use('/', routes);
+<<<<<<< HEAD
 app.use('/users', users);
+// app.use('/Ebay', ebay);
+=======
+app.use('/', users);
+app.use('/auth', auth);
 app.use('/ventures', ventures);
-app.use('/ventures/:id/bins', bins);
+app.use('/ventures', bins);
 app.use('/', kits);
-app.use('/', comments);
-app.use('/', auth);
+app.use('/ventures/:v_id/bins/:b_id/comments', comments);
 
+>>>>>>> upstream/master
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
