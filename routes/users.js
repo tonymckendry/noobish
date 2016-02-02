@@ -15,6 +15,10 @@ router.post('/users', function(req, res, next) {
   });
 });
 
+router.get('/search', function (req, res, next) {
+  res.render('search');
+});
+
 router.post('/users/login', function(req, res, next) {
     Users().where({username: req.body.username, password: req.body.password}).first().then(function(found){
        if (found){
