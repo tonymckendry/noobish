@@ -2,7 +2,25 @@
 var express = require('express');
 var router = express.Router();
 var bcrypt = require('bcrypt')
+var passport = require('passport')
 
+var knex = require('../db/knex')
+
+function User(){
+return knex('users');
+}
+
+router.get('/facebook', passport.authenticate('facebook'))
+
+router.get('/facebook/callback', passport.authenticate('facebook', {failureRedirect: '/'}),
+function(req, res){
+  console.log('*******///////*******')
+  console.log(req.user)
+  // res.cookie('user', req.user[0].id)
+  // User().select().where('id', req.cookies.user).then(function(results){
+    res.render('success')
+  // })
+})
 
 router.get('/signup', function(req, res, next) {
     res.render("auth/signup", {button_text: "sign up"});

@@ -4,6 +4,15 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('cookie-session');
+require('dotenv').load();
+var passport = require('passport');
+var FacebookStrategy = require('passport-facebook').Strategy
+var knex = require('./db/knex')
+
+function User(){
+  return knex('users')
+}
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -26,10 +35,48 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({keys:[process.env.SESSION_KEY1, process.env.SESSION_KEY2]}))
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new FacebookStrategy({
+  clientID: process.env.LINKEDIN_CLIENT_ID,
+  clientSecret: process.env.LINKEDIN_CLIENT_SECRET,
+  callbackURL: "http://localhost:3000/auth/facebook/callback/",
+  enableProof: false
+},
+  function(accessToken, refreshToken, profile, done){
+    console.log(profile)
+    User().select().where('fb_id', profile.id).then(function(fbUser){
+      if (fbUser.length){
+        console.log("in the if")
+        console.log(fbUser);
+        return done(null, fbUser)
+      } else {
+        console.log("in the else");
+        var obj = {
+          fb_id: profile.id,
+          username: profile.displayName.slice(0, profile.displayName.indexOf(' '))
+        }
+        console.log('obj is: ' + obj.username)
+        User().insert(obj).then(function(facebook){
+          return done(null, obj)
+
+          })
+      }
+    })
+    })
+)
+passport.serializeUser(function(user, done){
+  done(null, user)
+})
+passport.deserializeUser(function(user, done){
+  done(null, user)
+})
 
 app.use('/', routes);
 app.use('/', users);
-app.use('/', auth);
+app.use('/auth', auth);
 app.use('/ventures', ventures);
 app.use('/ventures/:v_id/bins', bins);
 app.use('/', kits);
