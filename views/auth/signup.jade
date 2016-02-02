@@ -6,12 +6,12 @@ block content
       h1 SIGN UP
   form(action="/users" method="POST")
     div.form-group
-      label(for="user") Email
-      input.form-control(type="text" id="email" name="email" placeholder="bob@gmail.com")
+      label(for="email") Email
+      input.form-control(type="text" id="email" name="email" placeholder="bob@noobish.com")
 
-      include form.jade
+    include form
 
 
   div.form-box-container
     div.alternative_action
-      a(href="/")  Already have an account? Sign in
+      a(href="/signin")  Already have an account? Sign in

@@ -6,35 +6,25 @@ function Users(){
   return knex('users');
 }
 
-// /* GET users listing. */
-// // router.get('/', function(req, res, next) {
-// //   res.send('this is from users.js');
-// // });
-//
-//
-//
-// router.post('/', function(req, res, next) {
-//   Users().insert(req.body).then(function(val){
-//     res.cookie("user", req.body.email);
-//     res.redirect("/tickets");
-//   });
-// });
-//
-// router.post('/login', function(req, res, next) {
-//     Users().where({email: req.body.email, password: req.body.password}).first().then(function(found){
-//        if (found){
-//          res.cookie("user", req.body.email);
-//          res.redirect("/tickets");
-//        } else {
-//          res.redirect("/no_auth");
-//        }
-//     })
-// });
-//
-// router.get('/', function(req, res, next) {
-//   Users.select().then(function(users){
-//     res.render("users/index", {users: users});
-//   });
-// });
+
+
+router.post('/users', function(req, res, next) {
+  Users().insert(req.body).then(function(val){
+    res.cookie("username", req.body.username);
+    res.redirect("/");
+  });
+});
+
+router.post('/users/login', function(req, res, next) {
+    Users().where({username: req.body.username, password: req.body.password}).first().then(function(found){
+       if (found){
+         res.cookie("username", req.body.username);
+         res.redirect("/");
+       } else {
+         res.redirect("/signin", {error: 'incorrect credentials'});
+       }
+    })
+});
+
 
 module.exports = router;
