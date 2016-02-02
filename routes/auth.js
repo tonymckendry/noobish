@@ -43,7 +43,7 @@ router.get('/:anything', function(req, res, next) {
   if (req.cookies.username){
     next();
   } else {
-    res.redirect("/signin");
+    res.redirect("auth/signin");
   }
 });
 

@@ -27,7 +27,7 @@ router.post('/:id', function (req, res, next) {
 router.post('/:id/delete', function (req, res, next) {
   Comments().where('id', req.params.id).del()
   .then(function (result) {
-    res.redirect('/ventures/'+req.params.v_id+'/bins/'+req.params.b_id');
+    res.redirect('/ventures/'+req.params.v_id+'/bins/'+req.params.b_id);
   })
 })
 
