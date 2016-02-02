@@ -14,7 +14,21 @@ var product = [
 var prices = {IdType: 'ASIN', ItemId: product[0], ResponseGroup: 'Offers'}
 prodAdv.call("ItemLookup", prices, function(err, results) {
 var lowNewPrice = results["Items"]["Item"]["OfferSummary"]["LowestNewPrice"]["FormattedPrice"]
-console.log(product[1], lowNewPrice);
+var lowUsedPrice = results["Items"]["Item"]["OfferSummary"]["LowestUsedPrice"]["FormattedPrice"]
+
+var pics = {IdType: 'ASIN', ItemId: product[0], ResponseGroup: 'Images'}
+prodAdv.call("ItemLookup", pics, function(err, image) {
+var medImage = image["Items"]["Item"]["MediumImage"]["URL"]
+
+// var review = {IdType: 'ASIN', ItemId: product[0], ResponseGroup: 'SalesRank'}
+// prodAdv.call("ItemLookup", rank, function(err, rank) {
+//   console.log(JSON.stringify(rank));
+console.log(product[1]);
+console.log('Lowest New Price = ' + lowNewPrice);
+console.log('Lowest Used Price = ' + lowUsedPrice);
+console.log(medImage);
 console.log(product[2]);
   })
+  })
+ })
 })
