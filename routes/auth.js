@@ -25,7 +25,7 @@ router.get('/:anything', function(req, res, next) {
   if (req.cookies.username){
     next();
   } else {
-    res.render("auth/signin", {button_text: "sign in"});
+    res.redirect("/signin");
   }
 });
 
