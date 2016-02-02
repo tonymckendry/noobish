@@ -4,7 +4,9 @@ exports.up = function(knex, Promise) {
     table.string('email');
     table.string('password');
     table.string('user_role');
-    table.integer('fb_id');
+    table.string('fb_id');
+    table.string('username', 20);
+
   })
 };
 

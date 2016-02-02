@@ -78,9 +78,9 @@ app.use('/', routes);
 app.use('/', users);
 app.use('/auth', auth);
 app.use('/ventures', ventures);
-app.use('/ventures/:id/bins', bins);
+app.use('/ventures', bins);
 app.use('/', kits);
-app.use('/', comments);
+app.use('/ventures/:v_id/bins/:b_id/comments', comments);
 
 
 // catch 404 and forward to error handler
