@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
   })
 });
 router.get('/:id', function(req, res, next) {
-  res.render('index', { title: '******this page is the: /ventures/:id page' });
+  res.render('ventures/index', { title: '******this page is the: /ventures/:id page' });
 });
 
 

@@ -88,7 +88,7 @@ app.use('/auth', auth);
 app.use('/ventures', ventures);
 app.use('/ventures', bins);
 app.use('/', kits);
-app.use('/ventures/:v_id/bins/:b_id/comments', comments);
+app.use('/ventures', comments);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
