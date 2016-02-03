@@ -2,13 +2,36 @@ var express = require('express');
 var router = express.Router();
 var knex = require('../db/knex')
 
+function Ventures(){
+return knex('ventures');
+}
+
 function Comments(){
 return knex('comments');
 }
 
-//THIS IS WHAT IS IN APP.JS:
-// app.use('/ventures/:v_id/bins/:b_id/comments', comments);
+function Bins(){
+return knex('bins');
+}
+function Users(){
+return knex('users');
+}
 
+// app.use('/ventures', comments);
+
+router.get('/:ven_id/bins/:bin_id/comments', function (req, res, next) {
+  Ventures().where('id', req.params.ven_id).first().then(function(result){
+    Bins().where('id', req.params.bin_id).first().then(function(resultB){
+      Comments().where('bin_id', req.params.bin_id).then(function (resultC) {
+        
+        Users().where('id', resultC.user_id).first().then(function (resultU) {
+          console.log(resultC.user_id);
+          res.render('comments/index', {venture: result, bin: resultB, comments: resultC});
+        })
+      })
+    });
+});
+})
 
 router.post('/', function(req, res, next) {
 
