@@ -4,7 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+var aws = require('aws-lib');
 var Ebay = require('ebay');
 
 
@@ -81,18 +81,12 @@ passport.deserializeUser(function(user, done){
 })
 
 app.use('/', routes);
-<<<<<<< HEAD
-app.use('/users', users);
-// app.use('/Ebay', ebay);
-=======
 app.use('/', users);
 app.use('/auth', auth);
 app.use('/ventures', ventures);
 app.use('/ventures', bins);
 app.use('/', kits);
 app.use('/ventures/:v_id/bins/:b_id/comments', comments);
-
->>>>>>> upstream/master
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
