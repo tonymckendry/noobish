@@ -5,15 +5,19 @@ append body
   div
     h1 New Bin
     form(action='/ventures/#{venture.id}/bins'  method='post')
+      div.errors
+        if errors
+          for error in errors
+            p.red= error
       div
         label(for="title") Title
-        input.form-control(type="text" id="title" name='title' placeholder="Title")
+        input.form-control(type="text" id="title" name='title' placeholder="Title" value= info ? info.title : '')
       div
         label(for="description") Description
-        input.form-control(type="text" id="description" name='description' placeholder="what's in your rig")
+        input.form-control(type="text" id="description" name='description' placeholder="what's in your rig" value= info ? info.description : '')
       div
         label(for="advice") Advice
-        input.form-control(type="text" id="advice" name='advice' placeholder="a tip or two for noobs")
+        input.form-control(type="text" id="advice" name='advice' placeholder="a tip or two for noobs" value= info ? info.advice : '')
       div
         label(for="venture_id")
         input.form-control(type="hidden" id="venture_id" name='venture_id' value='#{venture.id}')
