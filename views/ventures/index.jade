@@ -1,6 +1,10 @@
+
 extends ../layout
 
 
 append body
 	.container
-	
+		h1 WELCOME TO VENTURES INDEX PAGE
+		for venture in ventures
+			h1 Venture id: #{venture.id}
+			h1 Venture: #{venture.venture}

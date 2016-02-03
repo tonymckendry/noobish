@@ -4,6 +4,10 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var Ebay = require('ebay');
+
+
+
 var session = require('cookie-session');
 require('dotenv').load();
 var passport = require('passport');
@@ -21,6 +25,7 @@ var auth = require('./routes/auth');
 var comments = require('./routes/comments');
 var kits = require('./routes/kits')
 var bins = require('./routes/bins')
+
 
 var app = express();
 
@@ -75,6 +80,8 @@ passport.deserializeUser(function(user, done){
 })
 
 app.use('/', routes);
+
+
 app.use('/', users);
 app.use('/auth', auth);
 app.use('/ventures', ventures);

@@ -13,6 +13,7 @@
     "cookie-session": "^1.2.0",
     "debug": "~2.1.1",
     "dotenv": "^2.0.0",
+    "ebay": "0.0.1",
     "express": "~4.12.2",
     "jade": "~1.9.2",
     "jade-bootstrap": "*",
