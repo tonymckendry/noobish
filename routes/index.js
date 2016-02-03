@@ -3,7 +3,8 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('amazonSearch');
+  res.render('index', { title: 'this is index.js' });
 });
+
 
 module.exports = router;

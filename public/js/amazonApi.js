@@ -1,7 +1,7 @@
 function fetchItem(){
   var aws = require('aws-lib');
   var prodAdv = aws.createProdAdvClient('AKIAJVTAUXOMIYDSV6JQ', 'YcCjk/BzE+r7/8xodhbSav7DaINQ25ltjQekeZcT', 'noobish-20');
-  var options = {SearchIndex: "All", Keywords: "Q-Q2PROLED-PS3-B"}
+  var options = {SearchIndex: "All", Keywords: "SINGER 14CG754 ProFinish 2-3-4"}
 
   prodAdv.call("ItemSearch", options, function(err, result) {
     var product = [
