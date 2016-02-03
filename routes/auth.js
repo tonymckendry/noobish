@@ -13,13 +13,19 @@ return knex('users');
 router.get('/facebook', passport.authenticate('facebook'))
 
 router.get('/facebook/callback', passport.authenticate('facebook', {failureRedirect: '/'}),
-function(req, res){
-  console.log('*******///////*******')
-  console.log(req.user)
-  // res.cookie('user', req.user[0].id)
-  // User().select().where('id', req.cookies.user).then(function(results){
-    res.render('success')
-  // })
+function(req, res, next){
+  var useriD = req.user.fb_id
+  if (req.user[0] !== undefined){
+    User().select().where('username', req.user[0].username).then(function(results){
+      res.cookie('user', results[0].id)
+      res.render('index')
+    })
+  } else{
+    User().select().where('fb_id', useriD).then(function(results){
+      res.cookie('user', results[0].id)
+      res.redirect('/auth/choose')
+    })
+  }
 })
 
 router.get('/signup', function(req, res, next) {
@@ -27,17 +33,23 @@ router.get('/signup', function(req, res, next) {
 });
 
 router.get('/signout', function(req, res, next) {
-  res.clearCookie("username");
+  res.clearCookie("user");
   res.redirect("/");
 });
 
 router.get('/signin', function(req, res, next) {
-    if (req.cookies.username){
+    if (req.cookies.user){
       res.redirect("/ventures");
     } else {
       res.render("auth/signin", {button_text: "sign in"});
     }
 });
+
+router.get('/choose', function(req, res, next){
+  var user = req.cookies.user
+  res.render('auth/choose', {user: user})
+})
+
 
 router.get('/:anything', function(req, res, next) {
   if (req.cookies.username){

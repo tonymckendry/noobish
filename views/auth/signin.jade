@@ -1,4 +1,4 @@
-extends ../../node_modules/jade-bootstrap/layouts/starter
+extends ../layout
 
 append body  
   p
@@ -12,6 +12,7 @@ append body
       h1 SIGN IN
   form(action="/users/login" method="POST")
     include form.jade
+
 
   div.form-box-container
     div.alternative_action

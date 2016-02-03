@@ -1,9 +1,14 @@
-//- extends ../../node_modules/jade-bootstrap/layouts/starter
+extends ../layout
 
-block content
+append body
   div.form-box-container
     div.alternative_action
       h1 SIGN UP
+      a(href='/auth/facebook')
+        button.btn.btn-primary(type="submit") Sign up with Facebook
+    br
+    p or
+    br
   form(action="/users" method="POST")
     div.form-group
       label(for="email") Email
@@ -14,4 +19,6 @@ block content
 
   div.form-box-container
     div.alternative_action
+
       a(href="/auth/signin")  Already have an account? Sign in
+  
