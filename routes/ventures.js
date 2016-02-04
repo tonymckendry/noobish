@@ -8,16 +8,27 @@ var knex = require('../db/knex')
 function Ventures(){
 return knex('ventures');
 }
+function Bins(){
+return knex('bins');
+}
+function Users(){
+return knex('users');
+}
 /* GET home page. */
 router.get('/', function(req, res, next) {
   Ventures().then(function (results) {
-    res.render('ventures/index', {ventures: results});
+    res.render('ventures', {ventures: results});
   })
 });
-router.get('/:id', function(req, res, next) {
-  res.render('index', { title: '******this page is the: /ventures/:id page' });
-});
+router.get('/:ven_id', function(req, res, next) {
+  Bins().where('venture_id', req.params.ven_id).then(function (results) {
+    Users().where('id', results.user_id).first().then(function(user){
+      console.log(user);
 
+      res.render('ventures/show', { title: 'WELCOME TO THE BIN INDEX PAGE', ventu_id: req.params.ven_id, bins: results, user: user });
+    })
+  })
+});
 
 
 
