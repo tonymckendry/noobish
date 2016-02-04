@@ -42,7 +42,7 @@ router.get('/signout', function(req, res, next) {
 
 router.get('/signin', function(req, res, next) {
     if (req.cookies.user){
-      res.redirect("/");
+      res.redirect("/ventures");
     } else {
       res.render("auth/signin", {button_text: "sign in"});
     }
