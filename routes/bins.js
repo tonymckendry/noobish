@@ -56,20 +56,19 @@ router.get('/:ven_id/bins/new', function(req, res, next) {
   })
 });
 
-<<<<<<< HEAD
-// router.get('/:ven_id/bins/:id', function(req, res, next) {
-//   Bins().where('id', req.params.id).first().then(function (result) {
-//   // console.log(result);
-//   res.render('bins/show', { title: 'WELCOME TO THE BIN SHOW PAGE', bin: result });
-//   })
-// });
-//
-// router.get('/:ven_id/bins/:id/edit', function(req, res, next) {
-//   Bins().where('id', req.params.id).first().then(function (result) {
-//   // console.log(result);
-//   res.render('bins/edit', { title: 'WELCOME TO EDIT PAGE', bin: result });
-//   })
-// });
+
+router.get('/:ven_id/bins/:id', function(req, res, next) {
+  Bins().where('id', req.params.id).first().then(function (result) {
+  // console.log(result);
+  res.render('bins/show', { title: 'WELCOME TO THE BIN SHOW PAGE', bin: result });
+  })
+});
+
+router.get('/:ven_id/bins/:id/edit', function(req, res, next) {
+  Bins().where('id', req.params.id).first().then(function (result) {
+  res.render('bins/edit', { bin: result });
+  })
+});
 //
 //
 //
@@ -82,12 +81,12 @@ router.get('/:ven_id/bins/new', function(req, res, next) {
 // });
 //
 //
-// router.post('/:ven_id/bins/:id', function (req, res, next) {
-//   Bins().where('id', req.params.id).update(req.body)
-//   .then(function(result){
-//     res.redirect('/ventures/:ven_id/bins');
-//   });
-// });
+router.post('/:ven_id/bins/:id', function (req, res, next) {
+  Bins().where('id', req.params.id).update(req.body)
+  .then(function(result){
+    res.redirect('/ventures/'+ req.params.ven_id + '/bins');
+  });
+});
 //
 // router.post('/:ven_id/bins/:id/delete', function (req, res, next) {
 //   Bins().where('id', req.params.id).del()
