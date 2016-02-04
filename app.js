@@ -80,9 +80,9 @@ passport.deserializeUser(function(user, done){
   done(null, user)
 })
 
+app.use('/', routes);
 app.use('/', users);
 app.use('/auth', auth);
-app.use('/', routes);
 app.use('/ventures', ventures);
 app.use('/ventures', bins);
 app.use('/ventures', comments);

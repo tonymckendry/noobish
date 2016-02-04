@@ -16,19 +16,9 @@ return knex('kits')
 }
 
 
-// router.post('/:ven_id/bins/:bin_id/comments', function(req, res, next) {
-//
-//   Comments().insert(req.body).then(function(result){
-//     res.redirect('/ventures/'+req.params.ven_id+'/bins/'+req.params.bin_id);
-//   });
-// });
 
-router.get('/:ven_id/bins', function(req, res, next) {
-  Bins().where('venture_id', req.params.ven_id).then(function (results) {
 
-  res.render('bins/index', { title: 'WELCOME TO THE BIN INDEX PAGE', ventu_id: req.params.ven_id, bins: results, user: req.cookies.user });
-  })
-});
+
 
 router.get('/:ven_id/bins/new', function(req, res, next) {
   Ventures().where('id', req.params.ven_id).first().then(function (result) {

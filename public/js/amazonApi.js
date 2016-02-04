@@ -73,4 +73,41 @@ prodAdv.call("ItemSearch", options, function(err, result) {
 //   })
 // }
 
-// module.exports = fetchItem('brand1+ ' ' + name1')
+
+var obj = {}
+  module.exports =  function(itemCode, cb){
+      var product = {IdType: 'ASIN', ItemId: itemCode, ResponseGroup: 'ItemAttributes'}
+      prodAdv.call("ItemLookup", product, function(err, results) {
+        var productName = results["Items"]["Item"]["ItemAttributes"]["Title"]
+        var productUrl = results["Items"]["Item"]["DetailPageURL"]
+
+      var prices = {IdType: 'ASIN', ItemId: itemCode, ResponseGroup: 'Offers'}
+      prodAdv.call("ItemLookup", prices, function(err, results) {
+        var lowNewPrice = results["Items"]["Item"]["OfferSummary"]["LowestNewPrice"]["FormattedPrice"]
+
+      var pics = {IdType: 'ASIN', ItemId: itemCode, ResponseGroup: 'Images'}
+      return prodAdv.call("ItemLookup", pics, function(err, image) {
+        var medImage = image["Items"]["Item"]["MediumImage"]["URL"]
+        obj.productName = productName
+        obj.lowPrice = lowNewPrice
+        obj.img = medImage
+        obj.url = productUrl
+        obj.asin = itemCode
+        // return obj
+          // console.log(productName);
+          // console.log('Lowest New Price = ' + lowNewPrice);
+          // console.log(medImage);
+          // console.log(productUrl);
+          // console.log("*****");
+          // console.log(obj);
+          return cb(obj)
+        })
+        })
+      })
+    }
+      // fetchASIN('B00ZUPOMDQ')
+
+  // fetchItem(brand1.val() + ' ' + name1.val())
+  // function test(x){
+  //   console.log('this is working, x is ' + x)
+  // }
