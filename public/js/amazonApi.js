@@ -23,7 +23,7 @@ function fetchASIN(itemCode){
     })
   })
 }
-fetchASIN('B00R3NK340')
+// fetchASIN('B006ZJHDO6')
 //Gets item info using product description
 function fetchItem(itemSearch){
 var options = {SearchIndex: "All", Keywords: itemSearch}
