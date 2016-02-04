@@ -4,6 +4,8 @@ var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+
+var aws = require('aws-lib');
 var Ebay = require('ebay');
 
 
@@ -81,14 +83,10 @@ passport.deserializeUser(function(user, done){
 app.use('/', users);
 app.use('/auth', auth);
 app.use('/', routes);
-
-
 app.use('/ventures', ventures);
 app.use('/ventures', bins);
 app.use('/ventures', comments);
 app.use('/', kits);
-
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
