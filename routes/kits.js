@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var knex = require('../db/knex')
+var amazonASINGetter = require('../public/js/amazonAPI.js')
 
 function Bins(){
 return knex('bins');
@@ -17,10 +18,9 @@ router.get('/ventures/:ven_id/bins/:bin_id/kits/new', function(req, res, next){
 })
 
 router.post('/ventures/:ven_id/bins/:bin_id/kits', function(req, res, next){
-  Kits().insert(req.body).then(function(results){
-    console.log(results);
+  var asin = req.body.asin
     res.redirect('/kits')
-  })
 })
+
 
 module.exports = router;
