@@ -54,16 +54,15 @@ passport.use(new FacebookStrategy({
     console.log(profile)
     User().select().where('fb_id', profile.id).then(function(fbUser){
       if (fbUser.length){
-        console.log("in the if")
-        console.log(fbUser);
+
         return done(null, fbUser)
       } else {
-        console.log("in the else");
+
         var obj = {
           fb_id: profile.id,
           username: profile.displayName.slice(0, profile.displayName.indexOf(' '))
         }
-        console.log('obj is: ' + obj.username)
+      
         User().insert(obj).then(function(facebook){
             return done(null, obj)
           })
