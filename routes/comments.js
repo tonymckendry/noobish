@@ -22,20 +22,20 @@ return knex('users');
 
 
 
-
-router.post('/:ven_id/bins/:bin_id/comments/:id', function (req, res, next) {
-  Comments().where('id', req.params.id).update(req.body)
-  .then(function(result){
-    res.redirect('/ventures/'+req.params.ven_id+'/bins/'+req.params.bin_id);
-  });
-});
-
-router.post('/:ven_id/bins/:bin_id/comments/:id/delete', function (req, res, next) {
-  Comments().where('id', req.params.id).del()
-  .then(function (result) {
-    res.redirect('/ventures/'+req.params.ven_id+'/bins/'+req.params.bin_id);
-  })
-})
+// 
+// router.post('/:ven_id/bins/:bin_id/comments/:id', function (req, res, next) {
+//   Comments().where('id', req.params.id).update(req.body)
+//   .then(function(result){
+//     res.redirect('/ventures/'+req.params.ven_id+'/bins/'+req.params.bin_id);
+//   });
+// });
+//
+// router.post('/:ven_id/bins/:bin_id/comments/:id/delete', function (req, res, next) {
+//   Comments().where('id', req.params.id).del()
+//   .then(function (result) {
+//     res.redirect('/ventures/'+req.params.ven_id+'/bins/'+req.params.bin_id);
+//   })
+// })
 
 
 
