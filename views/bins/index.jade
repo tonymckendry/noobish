@@ -1,5 +1,5 @@
 
-extends ../../node_modules/jade-bootstrap/layouts/starter
+extends ../layout
 
 
 append body
@@ -8,6 +8,5 @@ append body
 		for bin in bins
 			h1 Bin Title: #{bin.title}
 			h1 Bin Description: #{bin.description}
-		
-	h1 
-		a(href='/ventures/#{ventu_id}/bins/new') Add Your Shit
+		h1 
+			a(href='/ventures/#{ventu_id}/bins/new') Add Your Shit
