@@ -11,7 +11,7 @@ return knex('ventures');
 /* GET home page. */
 router.get('/', function(req, res, next) {
   Ventures().then(function (results) {
-    res.render('ventures/index', {ventures: results});
+    res.render('ventures/index', {ventures: results, user: req.cookies.user});
   })
 });
 router.get('/:id', function(req, res, next) {
