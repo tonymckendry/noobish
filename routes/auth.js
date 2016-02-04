@@ -34,6 +34,9 @@ router.get('/signup', function(req, res, next) {
     res.render("auth/signup", {button_text: "sign up"});
 });
 
+
+
+
 router.get('/signout', function(req, res, next) {
   console.log('signout route');
   res.clearCookie("user");
