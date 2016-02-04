@@ -51,13 +51,7 @@ prodAdv.call("ItemSearch", options, function(err, result) {
  })
 }
 
-// fetchASIN('B005BZNDOO');
-// fetchASIN('B00ZUPOMDQ');
-fetchASIN('B00MYTSDU4');
-// fetchASIN('B00OAJ412U');
-// fetchASIN('B00MYTSDU4');
 
-// fetchItem('EVGA GeForce GTX 980 4GB SC GAMING, Silent Cooling Graphics Card 04G-P4-1982-KR')
-// fetchItem('Samsung 850 EVO 250GB 2.5-Inch SATA III Internal SSD (MZ-75E250B/AM)')
-// fetchItem('Asus VS228H-P/VS228 21.5-Inches Led Backlight Widescreen Computer Monitor')
-// fetchItem('ASUS ROG MAXIMUS VIII GENE LGA1151 DDR4 M.2 SATA 6Gb/s USB3.1 Type A Type C Intel Z170 mATX Motherboard')
+fetchASIN(asin.val());
+
+fetchItem(brand1.val() + ' ' + name1.val())

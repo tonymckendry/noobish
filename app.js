@@ -25,7 +25,7 @@ var users = require('./routes/users');
 var ventures = require('./routes/ventures');
 var auth = require('./routes/auth');
 var comments = require('./routes/comments');
-// var kits = require('./routes/kits')
+var kits = require('./routes/kits')
 var bins = require('./routes/bins')
 
 
