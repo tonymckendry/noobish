@@ -42,7 +42,7 @@ router.get('/:ven_id/bins/:id/edit', function(req, res, next) {
 router.post('/:ven_id/bins', function(req, res, next) {
   Bins().insert(req.body).then(function(result){
     Bins().select().where({title: req.body.title, venture_id: req.params.ven_id}).first().then(function(result){
-      res.redirect('/ventures/'+ req.params.ven_id +'/bins/' + result.id + '/kits/new', {title: result.title});
+      res.redirect('/ventures/'+ req.params.ven_id +'/bins/' + result.id + '/kits/new');
     })
   });
 });
