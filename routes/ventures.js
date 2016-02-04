@@ -15,7 +15,9 @@ router.get('/', function(req, res, next) {
   })
 });
 router.get('/:id', function(req, res, next) {
-  res.render('ventures/index', { title: '******this page is the: /ventures/:id page' });
+  Ventures().where('id', req.params.id).first().then(function (result) {
+    res.render('ventures/show', { venture: result, title: 'show an individual venture (e.g., fishing)' });
+  });
 });
 
 

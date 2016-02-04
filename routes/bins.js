@@ -9,6 +9,17 @@ return knex('bins');
 function Ventures(){
 return knex('ventures');
 }
+router.get('/:ven_id/bins/:bin_id/comments', function (req, res, next) {
+  Ventures().where('id', req.params.ven_id).first().then(function(result){
+    Bins().where('id', req.params.bin_id).first().then(function(resultB){
+      knex('comments')
+  .join('users', 'comments.user_id', '=', 'users.id')
+  .select().then(function (resultJ) {
+    res.render('comments/index', {venture: result, bin: resultB, joins: resultJ});
+})
+})
+});
+});
 
 function Kits(){
   return knex('kits')
@@ -40,15 +51,25 @@ router.get('/:ven_id/bins/:id', function(req, res, next) {
 router.get('/:ven_id/bins/:id/edit', function(req, res, next) {
   Bins().where('id', req.params.id).first().then(function (result) {
   // console.log(result);
+  res.render('bins/show', { title: 'WELCOME TO THE BIN SHOW PAGE', bin: result });
+  })
+});
+
+router.get('/:ven_id/bins/:id/edit', function(req, res, next) {
+  Bins().where('id', req.params.id).first().then(function (result) {
+  // console.log(result);
   res.render('bins/edit', { title: 'WELCOME TO EDIT PAGE', bin: result });
   })
 });
 
 
 
+
 router.post('/:ven_id/bins', function(req, res, next) {
   Bins().insert(req.body).then(function(result){
-    res.redirect('/ventures/'+ req.params.ven_id +'/bins');
+    Bins().select().where({title: req.body.title, venture_id: req.params.ven_id}).first().then(function(result){
+      res.redirect('/ventures/'+ req.params.ven_id +'/bins/' + result.id + '/kits/new');
+    })
   });
 });
 
