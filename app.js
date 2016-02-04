@@ -62,7 +62,7 @@ passport.use(new FacebookStrategy({
           fb_id: profile.id,
           username: profile.displayName.slice(0, profile.displayName.indexOf(' '))
         }
-      
+
         User().insert(obj).then(function(facebook){
             return done(null, obj)
           })
@@ -85,9 +85,8 @@ app.use('/', routes);
 
 app.use('/ventures', ventures);
 app.use('/ventures', bins);
-app.use('/ventures/:v_id/bins/:b_id/comments', comments);
-app.use('/ventures/:v_id/bins/:b_id/kits', kits);
-
+app.use('/ventures', comments);
+app.use('/', kits);
 
 
 // catch 404 and forward to error handler
