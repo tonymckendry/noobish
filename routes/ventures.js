@@ -9,8 +9,12 @@ function Ventures(){
 return knex('ventures');
 }
 /* GET home page. */
+
+
+
 router.get('/', function(req, res, next) {
   Ventures().then(function (results) {
+    console.log('this is working!! +' + results)
     res.render('ventures/index', {ventures: results, user: req.cookies.user});
   })
 });

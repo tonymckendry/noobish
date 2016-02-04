@@ -6,9 +6,9 @@ function Users(){
   return knex('users');
 }
 
-router.get('/:anything', function(req, res, next) {
+router.get('/ventures', function(req, res, next) {
   console.log('hitting middleware');
-  if (req.cookies.username){
+  if (req.cookies.user){
     next();
   } else {
     res.redirect("auth/signin");
