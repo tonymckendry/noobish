@@ -8,16 +8,17 @@ append body
       h3 either 
       div(class='input-group')
       form(action='/ventures/#{ven}/bins/#{result.bin_id}/kits' method='post')
-        input(value=bin name='bin' hidden='true')
+        input(value=bin name='bin' hidden)
         input.form-control(type='text' name = 'asin' placeholder='enter an amazon ASIN #')
         span(class='input-group-btn')
           button.purps(class='btn btn-default' type='submit') Go!
       h3 or 
       h4 enter then brand and name of the item and our algorithm will find the best match
-      form
+      form(action='/ventures/#{ven}/bins/#{result.bin_id}/kits' method='post')
+        input(value=bin name='bin' hidden)
         .halfer.input-group
           h4 brand
-          input.form-control.left(type='text' name = 'brand1')
+          input.form-control.left(type='text' name = 'brand1' value=' ')
         .halfer.input-group
           h4 name
           input.form-control.right(name = 'name1')

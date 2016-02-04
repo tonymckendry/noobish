@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var knex = require('../db/knex')
 var fetchASIN = require('../public/js/amazonApi.js')
+var fetchItem = require('../public/js/amazonApiItem.js')
 
 function Bins(){
 return knex('bins');
@@ -20,19 +21,39 @@ router.get('/ventures/:ven_id/bins/:bin_id/kits/new', function(req, res, next){
 router.post('/ventures/:ven_id/bins/:bin_id/kits', function(req, res, next){
   var asin = req.body.asin;
   var binish = req.body.bin
-  fetchASIN(asin, function (itemData) {
-    console.log("*****DATA***");
-    console.log(itemData);
-    var obj = {}
-    obj.item = itemData.productName
-    obj.url = itemData.url
-    obj.asin = itemData.asin
-    obj.image = itemData.img
-    obj.price = itemData.lowPrice
-    obj.bin_id = binish
-    Kits().insert(obj).then(function(result){
-      res.redirect('/')
+  var brand = req.body.brand1
+  if (brand !== undefined){
+    var query = req.body.brand1 + req.body.name1
+    fetchItem(query, function (itemData) {
+      console.log("*****DATA***");
+      console.log(itemData);
+      var obj = {}
+      obj.item = itemData.productName
+      obj.url = itemData.url
+      obj.asin = itemData.asin
+      obj.image = itemData.img
+      obj.price = itemData.lowPrice
+      obj.bin_id = binish
+      Kits().insert(obj).then(function(result){
+        res.redirect('/ventures/' + req.params.ven_id + '/bins/' + binish)
+      })
     })
-  })
+  }
+  else{
+    fetchASIN(asin, function (itemData) {
+      console.log("*****DATA***");
+      console.log(itemData);
+      var obj = {}
+      obj.item = itemData.productName
+      obj.url = itemData.url
+      obj.asin = itemData.asin
+      obj.image = itemData.img
+      obj.price = itemData.lowPrice
+      obj.bin_id = binish
+      Kits().insert(obj).then(function(result){
+        res.redirect('/ventures/' + req.params.ven_id + '/bins/' + binish)
+      })
+    })
+  }
 })
 module.exports = router;
