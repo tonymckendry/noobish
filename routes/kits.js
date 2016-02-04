@@ -16,4 +16,11 @@ router.get('/ventures/:ven_id/bins/:bin_id/kits/new', function(req, res, next){
   })
 })
 
+router.post('/ventures/:ven_id/bins/:bin_id/kits', function(req, res, next){
+  Kits().insert(req.body).then(function(results){
+    console.log(results);
+    res.redirect('/kits')
+  })
+})
+
 module.exports = router;
