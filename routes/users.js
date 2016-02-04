@@ -6,14 +6,14 @@ function Users(){
   return knex('users');
 }
 
-router.get('/ventures', function(req, res, next) {
-  console.log('hitting middleware');
-  if (req.cookies.user){
-    next();
-  } else {
-    res.redirect("auth/signin");
-  }
-});
+// router.get('/ventures', function(req, res, next) {
+//   console.log('hitting middleware');
+//   if (req.cookies.user){
+//     next();
+//   } else {
+//     res.redirect("auth/signin");
+//   }
+// });
 
 router.post('/users', function(req, res, next) {
   Users().insert(req.body).then(function(val){
