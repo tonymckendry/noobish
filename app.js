@@ -25,7 +25,7 @@ var users = require('./routes/users');
 var ventures = require('./routes/ventures');
 var auth = require('./routes/auth');
 var comments = require('./routes/comments');
-var kits = require('./routes/kits')
+// var kits = require('./routes/kits')
 var bins = require('./routes/bins')
 
 
@@ -87,7 +87,7 @@ app.use('/', users);
 app.use('/auth', auth);
 app.use('/ventures', ventures);
 app.use('/ventures', bins);
-app.use('/', kits);
+// app.use('/', kits);
 app.use('/ventures', comments);
 
 // catch 404 and forward to error handler

@@ -51,10 +51,11 @@ prodAdv.call("ItemSearch", options, function(err, result) {
  })
 }
 
-fetchASIN('B005BZNDOO');
-fetchASIN('B00ZUPOMDQ');
+// fetchASIN('B005BZNDOO');
+// fetchASIN('B00ZUPOMDQ');
 fetchASIN('B00MYTSDU4');
-fetchASIN('B00OAJ412U');
+// fetchASIN('B00OAJ412U');
+// fetchASIN('B00MYTSDU4');
 
 // fetchItem('EVGA GeForce GTX 980 4GB SC GAMING, Silent Cooling Graphics Card 04G-P4-1982-KR')
 // fetchItem('Samsung 850 EVO 250GB 2.5-Inch SATA III Internal SSD (MZ-75E250B/AM)')
