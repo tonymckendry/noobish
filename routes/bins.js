@@ -33,7 +33,7 @@ router.get('/:ven_id/bins/:id', function(req, res, next) {
 router.get('/:ven_id/bins/:id/edit', function(req, res, next) {
   Bins().where('id', req.params.id).first().then(function (result) {
   // console.log(result);
-  res.render('bins/edit', { title: 'WELCOME TO EDIT PAGE', bin: result });
+  res.render('bins/edit', { bin: result });
   })
 });
 
@@ -51,7 +51,7 @@ router.post('/:ven_id/bins', function(req, res, next) {
 router.post('/:ven_id/bins/:id', function (req, res, next) {
   Bins().where('id', req.params.id).update(req.body)
   .then(function(result){
-    res.redirect('/ventures/:ven_id/bins');
+    res.redirect('/ventures/'+ req.params.ven_id + '/bins');
   });
 });
 
