@@ -29,14 +29,14 @@ router.get('/:ven_id/bins/new', function(req, res, next) {
 router.get('/:ven_id/bins/:id', function(req, res, next) {
   Bins().where('id', req.params.id).then(function (result) {
     Kits().where('bin_id',req.params.id).then(function(payload){
-      res.render('bins/show', { title: 'WELCOME TO THE BIN SHOW PAGE', bin: result[0], kit: payload });
+      res.render('bins/show', { title: 'WELCOME TO THE BIN SHOW PAGE', bin: result[0], kit: payload, user: req.cookies.user });
     })
   })
 });
 
 router.get('/:ven_id/bins/:id/edit', function(req, res, next) {
   Bins().where('id', req.params.id).first().then(function (result) {
-  res.render('bins/edit', { bin: result });
+  res.render('bins/edit', { bin: result, user: req.cookies.user });
   })
 });
 
@@ -52,7 +52,7 @@ router.get('/:ven_id/bins/:id/edit', function(req, res, next) {
 router.post('/:ven_id/bins/:id', function (req, res, next) {
   Bins().where('id', req.params.id).update(req.body)
   .then(function(result){
-    res.redirect('/ventures/'+ req.params.ven_id + '/bins');
+    res.redirect('/ventures/'+ req.params.ven_id);
   });
 });
 
