@@ -18,7 +18,9 @@
 #navbar a{
   color:white;
 }
-
+a:hover{
+  text-decoration: none;
+}
 .option{
   margin: 15px;
 }
@@ -62,7 +64,7 @@
 }
 
 .binPreview{
-  height:170px;
+  height:140px;
   width:auto;
   border-radius: 10px;
   display:block;
@@ -236,7 +238,7 @@ body{
 }
 
 .binUserImg{
-  width: 345px;
+  height: 300px;
 }
 
 .binBottom{
