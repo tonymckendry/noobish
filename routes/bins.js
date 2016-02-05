@@ -12,6 +12,9 @@ return knex('comments');
 function Ventures(){
 return knex('ventures');
 }
+function Kits(){
+return knex('kits')
+}
 
 
 
@@ -24,9 +27,10 @@ router.get('/:ven_id/bins/new', function(req, res, next) {
 
 
 router.get('/:ven_id/bins/:id', function(req, res, next) {
-  Bins().where('id', req.params.id).first().then(function (result) {
-  // console.log(result);
-  res.render('bins/show', { title: 'WELCOME TO THE BIN SHOW PAGE', bin: result });
+  Bins().where('id', req.params.id).then(function (result) {
+    Kits().where('bin_id',req.params.id).then(function(payload){
+      res.render('bins/show', { title: 'WELCOME TO THE BIN SHOW PAGE', bin: result[0], kit: payload });
+    })
   })
 });
 
