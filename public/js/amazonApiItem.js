@@ -57,8 +57,8 @@ var obj = {}
   var options = {SearchIndex: "All", Keywords: itemSearch}
 
   prodAdv.call("ItemSearch", options, function(err, result) {
-    if (result["Items"]["Item"][0]["ASIN"] == undefined){
-      console.log('*/*/*/*/*UNDEFINED!!!!!*/*/*/*/*/')
+    if (result["Items"]["Item"] == undefined){
+      return cb('error')
     }
     else{
     var product = [
