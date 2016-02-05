@@ -56,6 +56,10 @@ router.post('/ventures/:ven_id/bins/:bin_id/kits', function(req, res, next){
       console.log("*****DATA***");
       console.log(itemData);
       var obj = {}
+      if (itemData == 'error'){
+        res.redirect('/ventures/' + req.params.ven_id + '/bins/' + req.cookies.bin + '/kits/newError')
+      }
+      else{
       obj.item = itemData.productName
       obj.url = itemData.url
       obj.asin = itemData.asin
@@ -65,6 +69,7 @@ router.post('/ventures/:ven_id/bins/:bin_id/kits', function(req, res, next){
       Kits().insert(obj).then(function(result){
         res.redirect('/ventures/' + req.params.ven_id + '/bins/' + binish)
       })
+    }
     })
   }
 })

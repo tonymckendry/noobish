@@ -78,6 +78,10 @@ var obj = {}
   module.exports =  function(itemCode, cb){
       var product = {IdType: 'ASIN', ItemId: itemCode, ResponseGroup: 'ItemAttributes'}
       prodAdv.call("ItemLookup", product, function(err, results) {
+        if (results["Items"]["Item"] == undefined){
+          return cb('error')
+        }
+        else{
         var productName = results["Items"]["Item"]["ItemAttributes"]["Title"]
         var productUrl = results["Items"]["Item"]["DetailPageURL"]
 
@@ -103,6 +107,7 @@ var obj = {}
           return cb(obj)
         })
         })
+      }
       })
     }
       // fetchASIN('B00ZUPOMDQ')
