@@ -5,6 +5,8 @@ append body
 	.container
 		h1= title
 		if bin
+			a(href='/ventures/#{bin.venture_id}')
+				button.btn.btn-primary Back to bins!
 			h1 Bin Title: #{bin.title}
 			h1 Bin Description: #{bin.description}
 			h1 Bin Advice: #{bin.advice}
