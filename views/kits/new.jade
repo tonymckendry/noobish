@@ -14,6 +14,23 @@ append body
           span(class='input-group-btn')
             button.purps(class='btn btn-default' type='submit') Go!
           input(value=bin name='bin' hidden)
+      a.btn.btn-lg.btn-success(href='#', data-toggle='modal', data-target='#basicModal') Find My ASIN#
+      #basicModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='basicModal', aria-hidden='true')
+        .modal-dialog
+          .modal-content
+            .modal-header
+              button.close(type='button', data-dismiss='modal', aria-hidden='true') &times;
+              h4#myModalLabel.modal-title Modal title
+            .modal-body
+              h3 Every product on Amazon has an ASIN. This number will help noobish connect to your exact product on Amazon. Follow the steps below to find your item's ASIN:
+              ol
+                li locate your exact itme on amazon
+                li Look at the URL and copy the number out of the url. In the URL below, it is the number (B015G022TK), in between /dp/ and /ref=...
+                li http://www.amazon.com/K2-All-Ski-Roller-Lite/dp/B015G022TK/ref=sr_1_4?s=sporting-goods&ie=UTF8&qid=1454690204&sr=1-4&keywords=k2+ski+bag
+
+            .modal-footer
+              button.btn.btn-default(type='button', data-dismiss='modal') Close
+
       h3 or 
       h4 enter the brand and name of the item and our algorithm will find the best match
       form(action='/ventures/#{ven}/bins/#{result.bin_id}/kits' method='post')
