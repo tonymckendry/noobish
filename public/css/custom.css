@@ -244,6 +244,7 @@ body{
 
 .binTits{
   float: left;
+  width: 30vw;
 }
 
 .binUserImg{
