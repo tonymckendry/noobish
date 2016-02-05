@@ -26,8 +26,10 @@ append body
 				.kit
 					a(href='#{bin.id}/kits/new')
 						button.btn.btn-primary add an item
-					a(href='#{bin.id}/edit') 
-						button.btn.btn-primary edit bin
+					form(action='/ventures/#{bin.venture_id}/bins/#{bin.id}/delete' method='post')
+						input.btn.btn-link(type='submit' value='Delete')
+					a(href='#{bin.id}/edit')
+						button.btn.btn-primary edit link
 			div.binBottom
 				p "#{bin.description}"
 				hr
