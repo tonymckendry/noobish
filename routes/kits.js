@@ -21,6 +21,7 @@ router.get('/ventures/:ven_id/bins/:bin_id/kits/new', function(req, res, next){
 router.post('/ventures/:ven_id/bins/:bin_id/kits', function(req, res, next){
   var asin = req.body.asin;
   var binish = req.body.bin
+  res.cookie('bin', req.body.bin)
   var brand = req.body.brand1
   if (brand !== undefined){
     var query = req.body.brand1 + req.body.name1

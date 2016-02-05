@@ -57,6 +57,10 @@ var obj = {}
   var options = {SearchIndex: "All", Keywords: itemSearch}
 
   prodAdv.call("ItemSearch", options, function(err, result) {
+    if (result["Items"]["Item"][0]["ASIN"] == undefined){
+      console.log('*/*/*/*/*UNDEFINED!!!!!*/*/*/*/*/')
+    }
+    else{
     var product = [
       result["Items"]["Item"][0]["ASIN"],
       result["Items"]["Item"][0]["ItemAttributes"]["Title"],
@@ -78,9 +82,9 @@ var obj = {}
        return cb(obj)
        })
      })
-   })
-  }
-
+   }
+ })
+}
       // fetchASIN('B00ZUPOMDQ')
 
   // fetchItem(brand1.val() + ' ' + name1.val())

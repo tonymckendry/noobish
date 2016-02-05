@@ -110,5 +110,8 @@ router.post('/:ven_id/bins', function(req, res, next) {
 //   })
 // })
 
+router.get('/:ven_id/bins/undefined/kits', function(res, req, next){
+  res.redirect('/' + req.params.ven_id + '/bins/' + req.cookies.bin + '/kits/new')
+})
 
 module.exports = router;

@@ -3,6 +3,10 @@
   src: url('bariol_regular-webfont.ttf');
 }
 
+a:hover{
+  text-decoration: none;
+}
+
 .navbar-fixed-top{
   background-color: #ff8235;
   color: white;
