@@ -11,7 +11,7 @@ append body
 					form(action='/upvotes' method='post')
 						input(type="text" value=bins2[index].id name='id' hidden='true')
 						input(type="text" value=bins2[index].venture_id name='ven' hidden='true')
-						button(type=submit)
+						input.heart(type='image' src='https://s3-us-west-2.amazonaws.com/testphotosnoobish/like.png')
 					h4.upvote #{bin.upvote}
 					h4.upvote #{bin.username}
 				
