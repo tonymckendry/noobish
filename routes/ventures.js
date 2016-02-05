@@ -28,7 +28,7 @@ router.get('/:id', function(req, res, next){
   .select().then(function (resultJ) {
     console.log(resultJ);
 
-    res.render('ventures/show', {bins: resultJ, ventu_id: req.params.ven_id})
+    res.render('ventures/show', {bins: resultJ, ventu_id: req.params.id})
   })
 })
 
