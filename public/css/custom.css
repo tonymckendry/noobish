@@ -294,3 +294,9 @@ hr{
 .btn{
   display: inline;
 }
+
+.heartCont{
+  /*position: relative;*/position: absolute;
+  top: 150px;
+  left: 500px;
+}

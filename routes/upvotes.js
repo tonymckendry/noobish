@@ -8,7 +8,7 @@ function Bins(){
 
 router.post('/upvotes', function(req, res, next){
   Bins().where('id', req.body.id).increment('upvote', 1).then(function(result){
-    res.redirect('/ventures/' + req.body.ven)
+    res.redirect('/ventures/' + req.body.ven + '/bins/' + req.body.id)
   })
 })
 
