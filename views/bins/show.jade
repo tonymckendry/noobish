@@ -22,11 +22,12 @@ append body
 								p #{kit[index].item} 
 								p #{kit[index].price}
 							br
-			.kit
-				a(href='#{bin.id}/kits/new')
-					button.btn.btn-primary add an item
-				a(href='#{bin.id}/edit') 
-					button.btn.btn-primary edit bin
+			if (bin.user_id == user)
+				.kit
+					a(href='#{bin.id}/kits/new')
+						button.btn.btn-primary add an item
+					a(href='#{bin.id}/edit') 
+						button.btn.btn-primary edit bin
 			div.binBottom
 				p "#{bin.description}"
 				hr
