@@ -45,9 +45,16 @@ router.get('/signout', function(req, res, next) {
 
 router.get('/signin', function(req, res, next) {
     if (req.cookies.user){
-      res.redirect("/ventures");
+      res.redirect("/");
     } else {
       res.render("auth/signin", {button_text: "sign in"});
+    }
+});
+router.get('/signinError', function(req, res, next) {
+    if (req.cookies.user){
+      res.redirect("/");
+    } else {
+      res.render("auth/signinError", {button_text: "sign in"});
     }
 });
 

@@ -29,11 +29,12 @@ router.post('/users', function(req, res, next) {
 router.post('/users/login', function(req, res, next) {
     Users().where({username: req.body.username, password: req.body.password}).first().then(function(found){
        if (found){  Users().where('username', req.body.username).first().then(function (result) {
+          console.log('in the if')
            res.cookie("user", result.id);
            res.redirect("/");
          })
-        } else {
-         res.redirect("auth/signin", {error: 'incorrect credentials'});
+       } else{
+         res.redirect("/auth/signinError");
        }
     })
 });
