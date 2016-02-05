@@ -4,11 +4,14 @@ extends ../layout
 append body
 	.container
 		.cardDisplay
-			for bin in bins
+			for bin, index in bins
 				div.card
 					h3.cards #{bin.title}
 					img(class='binPreview' src="#{bin.image}")
-					img(class="heart" src="https://s3-us-west-2.amazonaws.com/testphotosnoobish/like.png")
+					form(action='/upvotes' method='post')
+						input(type="text" value=bins2[index].id name='id' hidden='true')
+						input(type="text" value=bins2[index].venture_id name='ven' hidden='true')
+						button(type=submit)
 					h4.upvote #{bin.upvote}
 					h4.upvote #{bin.username}
 				
