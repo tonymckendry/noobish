@@ -167,7 +167,7 @@ body{
 }
 
 #kitter{
-  margin-top: 5vh;
+  text-align: center;
 }
 
 .homeGrid{
@@ -267,4 +267,5 @@ body{
   font-size: 100px;
   color: #4466d2;
   text-align: center;
-margin-top: 30%
+margin-top: 30%;
+}
