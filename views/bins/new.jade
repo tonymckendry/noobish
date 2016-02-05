@@ -14,6 +14,9 @@ append body
           label(for="title") Title
           input.form-control(type="text" id="title" name='title' placeholder="Title" value= info ? info.title : '')
         div
+          label(for="img") Image
+          input.form-control(type="text" id="image" name='image' placeholder="Paste in a public URL for your image" value= info ? info.image : '')
+        div
           label(for="description") Description
           input.form-control(type="text" id="description" name='description' placeholder="what's in your rig" value= info ? info.description : '')
         div

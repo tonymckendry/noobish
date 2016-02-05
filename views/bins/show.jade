@@ -10,7 +10,7 @@ append body
 						span.back(class="glyphicon glyphicon-chevron-left" aria-hidden="true") 
 						span.back back to bins
 				h1.binTitle #{bin.title}
-				img.binUserImg(src='/images/placeholder.png')
+				img.binUserImg(src='#{bin.image}')
 				p User: #{bin.user_id}
 		div
 			.scrollDiv
@@ -28,10 +28,9 @@ append body
 				a(href='#{bin.id}/edit') 
 					button.btn.btn-primary edit link
 			div.binBottom
-				//- p description: #{bin.description}
-				p "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio officiis aperiam facere sit fugiat vitae, veritatis quod voluptate velit rerum quia, blanditiis explicabo suscipit dolore maiores necessitatibus a ducimus illo.""
-				//- p advice from user: #{bin.advice}
-				p "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore accusantium assumenda repellat libero molestiae, enim eaque consequuntur maxime ipsam sunt eius doloribus praesentium, laborum voluptates animi nemo reiciendis corrupti excepturi.""
+				p "#{bin.description}"
+				hr
+				p "#{bin.advice}"
 			
 				
 			
