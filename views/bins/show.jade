@@ -24,12 +24,11 @@ append body
 							br
 			if (bin.user_id == user)
 				.kit
-					a(href='#{bin.id}/kits/new')
-						button.btn.btn-primary add an item
+					button.btn.btn-primary(href='#{bin.id}/kits/new') add an item
+					button.btn.btn-primary(href='#{bin.id}/edit') edit link
+					p
 					form(action='/ventures/#{bin.venture_id}/bins/#{bin.id}/delete' method='post')
-						input.btn.btn-link(type='submit' value='Delete')
-					a(href='#{bin.id}/edit')
-						button.btn.btn-primary edit link
+						input.btn.btn-primary(type='submit' value='Delete')
 			div.binBottom
 				p "#{bin.description}"
 				hr
