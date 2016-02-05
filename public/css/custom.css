@@ -273,3 +273,7 @@ body{
   text-align: center;
 margin-top: 30%;
 }
+
+hr{
+  border-color: #3E90A5;
+}
