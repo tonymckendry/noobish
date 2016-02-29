@@ -313,3 +313,8 @@ hr{
 .landingContainer p{
   font-size: 1.5em;
 }
+
+.landingButton{
+  margin-top: 30px;
+  font-size: 2em;
+}
