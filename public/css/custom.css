@@ -300,3 +300,16 @@ hr{
   top: 150px;
   left: 700px;
 }
+
+.landingContainer{
+  text-align: center;
+}
+
+.landingTitle{
+  margin-top: 50px;
+  font-size: 5em;
+}
+
+.landingContainer p{
+  font-size: 1.5em;
+}

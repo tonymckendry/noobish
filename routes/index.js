@@ -14,8 +14,18 @@ return knex('ventures');
 
 router.get('/', function(req, res, next) {
   Ventures().select().then(function(results){
+    if (req.cookies.user){
+      res.render('index', {user: req.cookies.user, ventures: results});
+    }
+    else{
+      res.render('landing');
+    }
+  })
+});
+router.get('/home', function(req, res, next) {
+  Ventures().select().then(function(results){
 
-    res.render('index', {user: req.cookies.user, ventures: results});
+
   })
 });
 
