@@ -50,7 +50,7 @@ app.use(passport.session());
 passport.use(new FacebookStrategy({
   clientID: process.env.LINKEDIN_CLIENT_ID,
   clientSecret: process.env.LINKEDIN_CLIENT_SECRET,
-  callbackURL: "https://pacific-ridge-12986.herokuapp.com/auth/facebook/callback/",
+  callbackURL: "https://noobishapp.herokuapp.com/auth/facebook/callback/",
   enableProof: false
 },
   function(accessToken, refreshToken, profile, done){
